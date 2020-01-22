@@ -1,28 +1,18 @@
 <template>
-  <div class="home">
-    <Header></Header>
-    <PhotoGrid></PhotoGrid>
-    <Profile></Profile>
-    <Auction></Auction>
-    <Footer></Footer>
+  <div id="home">
+    <Sidebar class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;"></Sidebar>
+    <Body class="w3-main" style="margin-left:300px"></Body>
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header";
-import PhotoGrid from "@/components/PhotoGrid";
-import Profile from "@/components/Profile";
-import Auction from "@/components/Auction";
-import Footer from "@/components/Footer";
-
+import Sidebar from "@/components/Sidebar";
+import Body from "@/components/Body";
 export default {
   name: "home",
   components: {
-    Header,
-    PhotoGrid,
-    Profile,
-    Auction,
-    Footer
+    Sidebar,
+    Body
   }
 };
 </script>
