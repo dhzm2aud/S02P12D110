@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
-const Member = 'member'
+const Members = 'members'
 
 // Setup Firebase
 // Do change to your own firebase configuration
@@ -22,8 +22,7 @@ const firestore = firebase.firestore()
 
 export default {
 	getDatas() {
-		const membersCollection = firestore.collection(Member)
-		return membersCollection
+		return firestore.collection(Members)
 			.get()
 			.then((docSnapshots) => {
 				return docSnapshots.docs.map((doc) => {
@@ -32,4 +31,31 @@ export default {
 				})
 			})
 	},
+	getData(id) {
+		console.log('read one data')
+		return firestore.collection(Members).doc(id)
+		.get()
+		.then((docSnapshots) => {
+			return docSnapshots.data()
+		})
+	},
+	postDatas() {
+		console.log('add')
+		return firestore.collection(Members).add({
+			members_id: 'test1',
+			password: '1234',
+			email: 'test1@naver.com'
+		})
+	},
+	putDatas() {
+		console.log('update')
+		firestore.collection(Members).doc('LFHwR5zEK53I9sfaKrcr').set({
+			members_id: 'test2'
+		})
+	},
+	delDatas() {
+		console.log('delete')
+		firestore.collection(Members).doc('LFHwR5zEK53I9sfaKrcr').delete()
+	}
+	
 }
