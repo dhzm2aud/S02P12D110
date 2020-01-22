@@ -5,22 +5,15 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view />
-    <Sidebar class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;"></Sidebar>
-    <Home class="w3-main" style="margin-left:300px"></Home>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Sidebar from "@/components/Sidebar";
-import Home from "@/views/Home";
 
 export default {
   name: "app",
-  components: {
-    Sidebar,
-    Home
-  }
+  components: {}
 };
 </script>
 <style>
