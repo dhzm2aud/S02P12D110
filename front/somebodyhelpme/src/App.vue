@@ -1,23 +1,28 @@
 <template>
   <div id="app">
-    <Header id="Header" />
     <div id="nav">
       <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
     </div>
     <router-view />
+    <Sidebar></Sidebar>
+    <Home></Home>
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header";
+// @ is an alias to /src
+import Sidebar from "@/components/Sidebar";
+import Home from "@/views/Home";
+
 export default {
-  name: "App",
+  name: "app",
   components: {
-    Header
+    Sidebar,
+    Home
   }
 };
-</script>>
+</script>
 
 <style>
 #app {
