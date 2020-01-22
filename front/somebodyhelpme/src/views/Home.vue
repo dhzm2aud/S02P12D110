@@ -1,16 +1,28 @@
 <template>
   <div class="home">
-    <Searching></Searching>
+    <Header></Header>
+    <PhotoGrid></PhotoGrid>
+    <Profile></Profile>
+    <Auction></Auction>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Searching from '@/components/Searching';
+import Header from "@/components/Header";
+import PhotoGrid from "@/components/PhotoGrid";
+import Profile from "@/components/Profile";
+import Auction from "@/components/Auction";
+import Footer from "@/components/Footer";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    Searching,
-  },
+    Header,
+    PhotoGrid,
+    Profile,
+    Auction,
+    Footer
+  }
 };
 </script>
