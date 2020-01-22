@@ -39,23 +39,65 @@ export default {
 			return docSnapshots.data()
 		})
 	},
-	postDatas() {
-		console.log('add')
-		return firestore.collection(Members).add({
-			members_id: 'test1',
-			password: '1234',
-			email: 'test1@naver.com'
+	postDatas(email, phone) {
+		console.log("여기당"+email+phone)
+		return firestore.collection(Members).doc(email).set({
+			phone: phone
 		})
 	},
-	putDatas() {
+	putDatas(id) {
 		console.log('update')
-		firestore.collection(Members).doc('LFHwR5zEK53I9sfaKrcr').set({
+		firestore.collection(Members).doc(id).set({
 			members_id: 'test2'
 		})
 	},
 	delDatas() {
 		console.log('delete')
 		firestore.collection(Members).doc('LFHwR5zEK53I9sfaKrcr').delete()
+	},
+	logInEmail(email, password, phone) {
+		firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
+			console.log(phone)
+			firestore.collection(Members).doc(email).set({
+				phone: phone
+			})
+			return result
+		}).catch(function(error) {
+			console.error('[Login Error]', error)
+		})
+	},
+	loginWithGoogle(phone) {
+		let provider = new firebase.auth.GoogleAuthProvider()
+		return firebase.auth().signInWithPopup(provider).then(function(result) {
+			let accessToken = result.credential.accessToken
+			console.log(accessToken)
+			let user = result.user
+			console.log(user)
+			console.log(user.email)
+			firestore.collection(Members).doc(user.email).set({
+				phone: phone
+			})
+			return result
+		}).catch(function(error) {
+			console.error('[Google Login Error]', error)
+		})
+	},
+	logout() {
+		firebase.auth().signOut().then(function() {
+			console.log("Sign-out successful.")
+		}).catch(function(error) {
+			console.error('[Logout Error]', error)
+		})
 	}
 	
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+	if (user) {
+		console.log(user)
+	} else {
+		console.log("not login")
+	}
+  });
+  
+  
