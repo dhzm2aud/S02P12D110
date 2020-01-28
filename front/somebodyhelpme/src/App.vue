@@ -1,29 +1,24 @@
 <template>
   <div id="app" class="w3-light-grey w3-content" style="max-width:1600px">
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-    </div>
+    <!-- 
+      아래 Nav는 BackPage에만 적용할 예정
+
+      Back Front 테스트 용
+    -->
+    <TestNav></TestNav>
+    <!-- ################################### -->
     <router-view />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import TestNav from "@/components/TestNav.vue";
 
 export default {
   name: "app",
-  components: {}
+  components: {
+    TestNav
+  }
 };
 </script>
-<style>
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Raleway", sans-serif;
-}
-</style>
