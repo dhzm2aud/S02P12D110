@@ -83,9 +83,3 @@ export default {
 };
 </script>
 
-<style>
-#h-footer {
-  position: absolute;
-  bottom: 0px;
-}
-</style>
