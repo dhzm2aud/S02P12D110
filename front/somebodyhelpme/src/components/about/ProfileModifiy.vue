@@ -5,6 +5,7 @@
         <label>Email</label>
         <input class="w3-input w3-border" type="text" name="Email" value="default" disabled />
       </div>
+
       <div class="w3-section">
         <label>Password</label>
         <input
@@ -15,9 +16,11 @@
           required
         />
       </div>
+
       <div class="w3-section">
         <label>Contact time</label>
-        <input class="w3-input w3-border" type="time" name="Contact" required />
+        <input id="Contacttime" class="w3-input" type="time" name="Open" value="09:00" required />
+        <input id="Contacttime" class="w3-input" type="time" name="Close" value="18:00" required />
       </div>
       <button type="submit" class="w3-button w3-black w3-margin-bottom">
         <i class="fa fa-paper-plane w3-margin-right"></i> Modify
@@ -35,4 +38,7 @@ export default {
 </script>
 
 <style>
+#Contacttime {
+  width: 50%;
+}
 </style>

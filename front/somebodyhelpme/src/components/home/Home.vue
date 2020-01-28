@@ -1,6 +1,5 @@
 <template>
   <div id="home">
-    <PhotoGrid></PhotoGrid>
     <Header></Header>
     <PhotoGrid id="PhotoGrid"></PhotoGrid>
     <Profile id="Profile"></Profile>
