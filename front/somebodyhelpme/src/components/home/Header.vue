@@ -1,10 +1,10 @@
 <template>
   <div id="Header">
     <!-- Header -->
-    <header id="portfolio">
+    <header>
       <a href="#">
         <img
-          src="/w3images/avatar_g2.jpg"
+          src="http://via.placeholder.com/600x300"
           style="width:65px;"
           class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"
         />
@@ -39,6 +39,7 @@
 
 export default {
   name: "Header",
-  components: {}
+  components: {},
+  methods: {}
 };
 </script>

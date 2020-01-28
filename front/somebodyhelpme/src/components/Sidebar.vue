@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;">
     <!-- Sidebar/menu -->
     <nav id="mySidebar">
       <br />
@@ -12,36 +12,41 @@
         >
           <i class="fa fa-remove"></i>
         </a>
-        <img src="https://placeimg.com/320/320/any" style="width:45%;" class="w3-round" />
+        <img src="http://via.placeholder.com/600x300" style="width:45%;" class="w3-round" />
         <br />
         <br />
         <p class="w3-text-grey">이성준님 환영합니다.</p>
         <h4>
-          <b>PORTFOLIO</b>
+          <b>{{$store.state.contentPage.toUpperCase()}}</b>
         </h4>
       </div>
       <div class="w3-bar-block">
-        <a
-          href="#portfolio"
-          onclick="w3_close()"
-          class="w3-bar-item w3-button w3-padding w3-text-teal"
-        >
-          <i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO
-        </a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
-          <i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT
-        </a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
-          <i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT
-        </a>
-      </div>
-      <div class="w3-panel w3-large">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
+        <div v-if="$store.state.contentPage == 'home'">
+          <Home-sidebar></Home-sidebar>
+        </div>
+        <div v-else-if="$store.state.contentPage == 'about'">
+          <about-sidebar></about-sidebar>
+        </div>
+        <div v-else-if="$store.state.contentPage == 'command'">
+          <command-sidebar></command-sidebar>
+        </div>
+        <div class="w3-panel w3-large">
+          <a href>
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+          </a>
+          <a href>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+          </a>
+          <a href>
+            <i class="fa fa-github w3-hover-opacity"></i>
+          </a>
+          <a href="https://lab.ssafy.com/webmobile1-sub2/s02p12d110.git">
+            <i class="fa fa-gitlab w3-hover-opacity"></i>
+          </a>
+          <a href>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+          </a>
+        </div>
       </div>
     </nav>
 
@@ -58,21 +63,16 @@
 
 <script>
 // @ is an alias to /src
+import HomeSidebar from "./home/HomeSidebar.vue";
+import aboutSidebar from "./about/aboutSidebar.vue";
+import commandSidebar from "./commandCenter/commandSidebar.vue";
 
 export default {
   name: "Sidebar",
-  components: {},
-  methods: {
-    // Script to open and close sidebar
-    w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-      document.getElementById("myOverlay").style.display = "block";
-    },
-
-    w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("myOverlay").style.display = "none";
-    }
+  components: {
+    HomeSidebar,
+    aboutSidebar,
+    commandSidebar
   }
 };
 </script>
