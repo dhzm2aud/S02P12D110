@@ -13,6 +13,7 @@
 
 	<mappers>
 		<mapper resource="sql/membersMapper.xml" />
+		<mapper resource="sql/auctionMapper.xml" />
 	</mappers>
 </configuration>
 
