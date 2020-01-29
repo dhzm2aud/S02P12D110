@@ -1,5 +1,6 @@
 <template>
   <div id="ProfileModeifiy">
+    <h2>내 정보 수정</h2>
     <form action target="_blank">
       <div class="w3-section">
         <label>Email</label>
@@ -16,6 +17,10 @@
           required
         />
       </div>
+      <div class="w3-section">
+        <label>Portfolio</label>
+        <input class="w3-input w3-border" type="file" name="edit-portfolio" placeholder="file" />
+      </div>
 
       <div class="w3-section">
         <label>Contact time</label>
@@ -26,6 +31,7 @@
         <i class="fa fa-paper-plane w3-margin-right"></i> Modify
       </button>
     </form>
+    <hr />
   </div>
 </template>
 
@@ -39,6 +45,6 @@ export default {
 
 <style>
 #Contacttime {
-  width: 50%;
+  width: 45%;
 }
 </style>
