@@ -1,10 +1,10 @@
 <template>
-  <div>로그인</div>
+  <div calss="w3-light-grey"></div>
 </template>
 
 <script>
 export default {
-  name: "login"
+  name: "signUp"
 };
 </script>
 
