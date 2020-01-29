@@ -1,5 +1,5 @@
 <template>
-  <div id="ProfileModeifiy">
+  <div id="ProfileModify">
     <h2>내 정보 수정</h2>
     <form action target="_blank">
       <div class="w3-section">

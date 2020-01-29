@@ -24,6 +24,7 @@ export default {
 
 <style>
 #about {
-  padding: 10px;
+  padding: 20px;
+  line-height: 2em;
 }
 </style>
