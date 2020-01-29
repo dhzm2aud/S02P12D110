@@ -8,22 +8,7 @@ import CommandCenter from "../components/commandCenter/CommandCenter.vue";
 
 Vue.use(VueRouter);
 
-<<<<<<< HEAD
 const routes = [{
-    path: '/',
-    name: 'home',
-    component: Home,
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: About,
-=======
-const routes = [
-  {
     path: "/",
     name: "FrontPage",
     component: FrontPage
@@ -47,7 +32,6 @@ const routes = [
     path: "/CommandCenter",
     name: "CommandCenter",
     component: CommandCenter
->>>>>>> 0586cb17302363d97d0e59349d5b12ad04229fef
   }
 ];
 

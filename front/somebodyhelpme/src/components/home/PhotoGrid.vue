@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD:front/somebodyhelpme/src/components/PhotoGrid.vue
   <div>
     <!-- First Photo Grid-->
     <div class="w3-row-padding">
@@ -105,9 +104,6 @@
       </div>
     </div>
   </div>
-=======
-  <div id="PhotoGrid"></div>
->>>>>>> 0586cb17302363d97d0e59349d5b12ad04229fef:front/somebodyhelpme/src/components/home/PhotoGrid.vue
 </template>
 
 <script>
