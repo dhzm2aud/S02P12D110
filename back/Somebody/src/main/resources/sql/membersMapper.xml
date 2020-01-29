@@ -6,6 +6,10 @@
 		resultType="Members">
 		SELECT * From members where members_id=#{value}
 	</select>
+	
+		<select id="searchAllMember" resultType="Members">
+		SELECT * From members
+	</select>
 
 	<insert id="insertMember" parameterType="Members">
 		INSERT
@@ -17,20 +21,20 @@
 		UPDATE members
 		SET password=#{password}, name=#{name}, email=#{email},
 		address=#{address}, phone=#{phone}, account=#{account}, image=#{image},
-		portfolio=#{portfolio})
+		portfolio=#{portfolio}
 		WHERE members_id=#{membersId}
 	</update>
 
-	<delete id="deleteMember" parameterType="string">
+	<delete id="deleteMember" parameterType="String">
 		DELETE
 		FROM members
 		WHERE
-		members_id=#{membersId}
+		members_id=	#{value}
 	</delete>
 
-	<select id="passCheck" parameterType="map" resultType="Members">
+	<select id="passCheck" parameterType="Map" resultType="Members">
 		SELECT *
 		FROM members
-		WHERE members_id=#{membersId} and password=#{password]}
+		WHERE members_id=#{membersId} and password=#{password}
 	</select>
 </mapper>
