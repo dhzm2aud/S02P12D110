@@ -21,10 +21,3 @@ export default {
   }
 };
 </script>
-
-<style>
-#about {
-  padding: 20px;
-  line-height: 2em;
-}
-</style>

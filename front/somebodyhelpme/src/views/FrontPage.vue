@@ -1,22 +1,27 @@
 
 <template>
-  <div id="front">
-    <Login></Login>
+  <div id="front" class="w3-light-grey">
+    <SignIn></SignIn>
     <Menual></Menual>
   </div>
 </template>
 
 <script>
-import Login from "@/components/front/login.vue";
-import Menual from "@/components/front/menual.vue";
+import SignIn from "@/components/front/SignIn.vue";
+import Menual from "@/components/front/Menual.vue";
 export default {
   name: "FrontPage",
   components: {
-    Login,
+    SignIn,
     Menual
   }
 };
 </script>
 
 <style>
+#front {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 </style>

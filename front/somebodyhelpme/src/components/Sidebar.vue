@@ -65,14 +65,14 @@
 // @ is an alias to /src
 import HomeSidebar from "./home/HomeSidebar.vue";
 import AboutSidebar from "./about/AboutSidebar.vue";
-import commandSidebar from "./commandCenter/commandSidebar.vue";
+import CommandSidebar from "./commandCenter/CommandSidebar.vue";
 
 export default {
   name: "Sidebar",
   components: {
     HomeSidebar,
     AboutSidebar,
-    commandSidebar
+    CommandSidebar
   }
 };
 </script>

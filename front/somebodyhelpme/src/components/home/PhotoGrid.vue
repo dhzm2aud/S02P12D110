@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <!-- First Photo Grid-->
     <div class="w3-row-padding">
@@ -105,7 +104,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
