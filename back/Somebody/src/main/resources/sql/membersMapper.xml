@@ -2,7 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberMapper">
-	<select id="selectMember" parameterType="String" resultType="Members">
+	<select id="searchMember" parameterType="String"
+		resultType="Members">
 		SELECT * From members where members_id=#{value}
+	</select>
+
+	<insert id="insertMember" parameterType="Members">
+		INSERT
+		INTO members (members_id, password, name, email, phone)
+		VALUES(#{membersId}, #{password}, #{name}, #{address}, #{phone})
+	</insert>
+
+	<update id="updateMember" parameterType="Members">
+		UPDATE members
+		SET password=#{password}, name=#{name}, email=#{email},
+		address=#{address}, phone=#{phone}, account=#{account}, image=#{image},
+		portfolio=#{portfolio})
+		WHERE members_id=#{membersId}
+	</update>
+
+	<delete id="deleteMember" parameterType="string">
+		DELETE
+		FROM members
+		WHERE
+		members_id=#{membersId}
+	</delete>
+
+	<select id="passCheck" parameterType="map" resultType="Members">
+		SELECT *
+		FROM members
+		WHERE members_id=#{membersId} and password=#{password]}
 	</select>
 </mapper>

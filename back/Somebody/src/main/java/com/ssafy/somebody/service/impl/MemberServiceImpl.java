@@ -8,6 +8,7 @@ import com.ssafy.somebody.vo.Members;
 
 @Service
 public class MemberServiceImpl implements MemberService{
+	
 	@Autowired
 	private MemberDao memberDao;
 	@Override
@@ -15,12 +16,12 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.insertMember(member);
 	}
 	@Override
-	public Members select(String membersId) {
-		return memberDao.select(membersId);
+	public Members searchMember(String membersId) {
+		return memberDao.searchMember(membersId);
 	}
 	@Override
-	public List<Members> selectAll() {
-		return memberDao.selectAll();
+	public List<Members> searchAllMember() {
+		return memberDao.searchAllMember();
 	}
 	@Override
 	public int updateMember(Members member) {
@@ -29,5 +30,9 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int deleteMember(String memberId) {
 		return memberDao.deleteMember(memberId);
+	}
+	@Override
+	public Members passCheck(String membersId, String password) {
+		return memberDao.passCheck(membersId, password);
 	}
 }
