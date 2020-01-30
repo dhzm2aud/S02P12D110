@@ -20,14 +20,14 @@ import com.ssafy.somebody.vo.BoolResult;
 import com.ssafy.somebody.vo.Members;
 
 @RestController
-@RequestMapping("member")
+@RequestMapping("/member")
 @CrossOrigin(origins = { "*" }, maxAge = 6000)
 public class MemberController {
 
 	@Autowired
 	MemberService memberservice;
 
-	@GetMapping("/searchMember/{membersId}")
+	@GetMapping("/search/{membersId}")
 	public ResponseEntity<BoolResult> searchMember(@PathVariable String membersId) throws Exception {
 		Members members = memberservice.searchMember(membersId);
 		BoolResult nr = new BoolResult();
@@ -40,7 +40,7 @@ public class MemberController {
 		return new ResponseEntity(members, HttpStatus.OK);
 	}
 
-	@GetMapping("/searchAllMember")
+	@GetMapping("/searchAll")
 	public ResponseEntity<BoolResult> searchAllMember() throws Exception {
 		List<Members> memberslist = memberservice.searchAllMember();
 		BoolResult nr = new BoolResult();
@@ -61,7 +61,7 @@ public class MemberController {
 		return new ResponseEntity<BoolResult>(nr, HttpStatus.OK);
 	}
 
-	@PutMapping("/updateMember")
+	@PutMapping("/update")
 	public ResponseEntity<BoolResult> updateMember(@RequestBody Members member) throws Exception {
 		boolean flag = memberservice.updateMember(member) > 0 ? true : false;
 		BoolResult nr = new BoolResult();
@@ -73,7 +73,7 @@ public class MemberController {
 		return new ResponseEntity<BoolResult>(nr, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/deleteMember/{membersId}")
+	@DeleteMapping("/delete/{membersId}")
 	public ResponseEntity<BoolResult> deleteMember(@PathVariable String membersId) throws Exception {
 		boolean flag = memberservice.deleteMember(membersId) > 0 ? true : false;
 		BoolResult nr = new BoolResult();

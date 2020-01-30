@@ -21,14 +21,14 @@ import com.ssafy.somebody.vo.BoolResult;
 import com.ssafy.somebody.vo.Members;
 
 @RestController
-@RequestMapping("attend")
+@RequestMapping("/attend")
 @CrossOrigin(origins = { "*" }, maxAge = 6000)
 public class AttendController {
 
 	@Autowired
 	private AttendService attendservice;
 	
-	@GetMapping("/searchAttendByAuctionId/{auctionId}")
+	@GetMapping("/searchByAuctionId/{auctionId}")
 	public ResponseEntity<BoolResult> searchAttendByAuctionId(@PathVariable String auctionId) throws Exception {
 		List<Attend> attend = attendservice.searchAttendByAuctionId(auctionId);
 		BoolResult nr = new BoolResult();
@@ -41,7 +41,7 @@ public class AttendController {
 		return new ResponseEntity(attend, HttpStatus.OK);
 	}
 
-	@GetMapping("/searchAttendByMembersId/{membersId}")
+	@GetMapping("/searchByMembersId/{membersId}")
 	public ResponseEntity<BoolResult> searchAttendByMembersId(@PathVariable String membersId) throws Exception {
 		List<Attend> attend = attendservice.searchAttendByMembersId(membersId);
 		BoolResult nr = new BoolResult();
@@ -78,7 +78,7 @@ public class AttendController {
 		return new ResponseEntity<BoolResult>(nr, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/cancelAttend/{attendId}")
+	@DeleteMapping("/cancel/{attendId}")
 	public ResponseEntity<BoolResult> deleteMember(@PathVariable String attendId) throws Exception {
 		boolean flag = attendservice.cancelAttend(attendId) > 0 ? true : false;
 		BoolResult nr = new BoolResult();
