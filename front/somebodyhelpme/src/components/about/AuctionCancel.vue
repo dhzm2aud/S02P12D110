@@ -15,7 +15,7 @@
         <td>{{auction.Contents}}</td>
         <td>{{auction.Time2}}</td>
         <td>
-          <button style="width:100%">삭제</button>
+          <button @click="deletedata(index)" style="width:100%">삭제</button>
         </td>
       </tbody>
     </table>
@@ -29,6 +29,14 @@ export default {
     return {
       auctions: data
     };
+  },
+  methods: {
+    deletedata(index) {
+      data.splice(index, 1);
+      this.$router.push({
+        path: "#BackPage"
+      });
+    }
   }
 };
 </script>
