@@ -13,7 +13,9 @@
         <td>{{auction.Title}}</td>
         <td>{{auction.Contents}}</td>
         <td>{{auction.Time2}}</td>
-        <button>삭제</button>
+        <td>
+          <button style="width:100%">삭제</button>
+        </td>
       </tr>
     </table>
   </div>
@@ -52,5 +54,31 @@ export default {
 <style>
 #auction-list {
   list-style: none;
+}
+#AuctionCancel > table {
+  border: 1px solid;
+  border-collapse: separate;
+  width: 100%;
+  border-radius: 6px;
+  border-spacing: 0;
+  text-align: center;
+}
+td {
+  border: 1px solid;
+}
+table tr:first-child th:first-child {
+  border-top-left-radius: 6px;
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 6px;
+}
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 6px;
 }
 </style>
