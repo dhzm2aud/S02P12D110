@@ -15,7 +15,12 @@
           <span style="color:red">*</span> ID
         </label>
         <span class="w3-right w3-text-gray" @click="idOverlap">Overlap</span>
-        <input class="w3-input w3-border" name="id" type="text" v-model="userInfoVo.id" />
+        <input
+          class="w3-input w3-border"
+          name="membersId"
+          type="text"
+          v-model="userInfoVo.membersId"
+        />
       </p>
       <p>
         <label>
@@ -125,7 +130,7 @@ export default {
   data: () => {
     return {
       userInfoVo: {
-        id: "test",
+        membersId: "test",
         password: "test",
         passwordRetry: "test",
         name: "test",
@@ -134,8 +139,8 @@ export default {
         detailAddress: "",
         phone: "",
         account: "신한-110414698540",
-        image: "",
-        portfolio: "",
+        image: null,
+        portfolio: null,
         rank: 0
       },
       pageInfo: {
@@ -158,7 +163,7 @@ export default {
     },
     RequiredInfoInspc() {
       if (
-        this.userInfoVo.id.trim().length > 0 &&
+        this.userInfoVo.membersId.trim().length > 0 &&
         this.userInfoVo.password.trim().length > 0 &&
         this.userInfoVo.name.trim().length > 0 &&
         this.userInfoVo.email.trim().length > 0

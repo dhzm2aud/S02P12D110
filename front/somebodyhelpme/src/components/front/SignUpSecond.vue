@@ -13,7 +13,7 @@
         Add Portfolio
         <b>( not required )</b>
       </p>
-      <input type="hidden" name="id" :value="userInfo.id" />
+      <input type="hidden" name="membersId" :value="userInfo.membersId" />
       <input type="hidden" name="password" :value="userInfo.password" />
       <input type="hidden" name="name" :value="userInfo.name" />
       <input type="hidden" name="email" :value="userInfo.email" />
@@ -87,12 +87,13 @@ export default {
     userRegist() {
       let formData = new FormData(document.getElementById("formData"));
       http
-        .post(`member/insertMember`, formData)
-        .then(res => {
-          alert(`${res.data.nr}가 추가되었습니다.`);
+        .post(`member/insert`, formData)
+        .then(() => {
+          alert(`${this.userInfo.name}님 회원가입을 축하합니다.`);
+          this.$router.push("/");
         })
         .catch(() => {
-          alert("추가 실패 ");
+          alert("회원가입에 실패하였습니다.");
         });
     }
   }
