@@ -1,10 +1,10 @@
 <template>
-  <carousel :per-page="1" :mouse-drag="true" :autoplay="true" :loop="true">
+  <carousel :per-page="1" :autoplay="true" :loop="true" :paginationPosition="bottom-overlay">
     <slide>
       <div class="w3-row-padding">
         <div class="w3-third w3-margin-bottom">
           <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-            <img src="https://placehold.it/320" style="width:100%" class="w3-hover-opacity" />
+            <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
             <li class="w3-padding-16">헬로우 드림1</li>
             <li class="w3-padding-16">블로그배포 2018 어워즈 수상! 크몽랭킹 1위! 카페/블로그 광고포스팅 팍팍 도와 드립니다</li>
             <li class="w3-padding-16">
@@ -23,7 +23,7 @@
 
         <div class="w3-third w3-margin-bottom">
           <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-            <img src="https://placehold.it/320" style="width:100%" class="w3-hover-opacity" />
+            <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
             <li class="w3-padding-16">헬로우 드림1</li>
             <li class="w3-padding-16">블로그배포 2018 어워즈 수상! 크몽랭킹 1위! 카페/블로그 광고포스팅 팍팍 도와 드립니다</li>
             <li class="w3-padding-16">
@@ -42,7 +42,7 @@
 
         <div class="w3-third w3-margin-bottom">
           <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-            <img src="https://placehold.it/320" style="width:100%" class="w3-hover-opacity" />
+            <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
             <li class="w3-padding-16">헬로우 드림1</li>
             <li class="w3-padding-16">블로그배포 2018 어워즈 수상! 크몽랭킹 1위! 카페/블로그 광고포스팅 팍팍 도와 드립니다</li>
             <li class="w3-padding-16">
@@ -65,7 +65,7 @@
       <div class="w3-row-padding">
         <div class="w3-third w3-margin-bottom">
           <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-            <img src="https://placehold.it/320" style="width:100%" class="w3-hover-opacity" />
+            <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
             <li class="w3-padding-16">헬로우 드림1</li>
             <li class="w3-padding-16">블로그배포 2018 어워즈 수상! 크몽랭킹 1위! 카페/블로그 광고포스팅 팍팍 도와 드립니다</li>
             <li class="w3-padding-16">
@@ -84,7 +84,7 @@
 
         <div class="w3-third w3-margin-bottom">
           <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-            <img src="https://placehold.it/320" style="width:100%" class="w3-hover-opacity" />
+            <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
             <li class="w3-padding-16">헬로우 드림1</li>
             <li class="w3-padding-16">블로그배포 2018 어워즈 수상! 크몽랭킹 1위! 카페/블로그 광고포스팅 팍팍 도와 드립니다</li>
             <li class="w3-padding-16">
@@ -103,7 +103,7 @@
 
         <div class="w3-third w3-margin-bottom">
           <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-            <img src="https://placehold.it/320" style="width:100%" class="w3-hover-opacity" />
+            <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
             <li class="w3-padding-16">헬로우 드림1</li>
             <li class="w3-padding-16">블로그배포 2018 어워즈 수상! 크몽랭킹 1위! 카페/블로그 광고포스팅 팍팍 도와 드립니다</li>
             <li class="w3-padding-16">
@@ -126,7 +126,7 @@
       <div class="w3-row-padding">
         <div class="w3-third w3-margin-bottom">
           <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-            <img src="https://placehold.it/320" style="width:100%" class="w3-hover-opacity" />
+            <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
             <li class="w3-padding-16">헬로우 드림1</li>
             <li class="w3-padding-16">블로그배포 2018 어워즈 수상! 크몽랭킹 1위! 카페/블로그 광고포스팅 팍팍 도와 드립니다</li>
             <li class="w3-padding-16">
@@ -145,7 +145,7 @@
 
         <div class="w3-third w3-margin-bottom">
           <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-            <img src="https://placehold.it/320" style="width:100%" class="w3-hover-opacity" />
+            <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
             <li class="w3-padding-16">헬로우 드림1</li>
             <li class="w3-padding-16">블로그배포 2018 어워즈 수상! 크몽랭킹 1위! 카페/블로그 광고포스팅 팍팍 도와 드립니다</li>
             <li class="w3-padding-16">
@@ -164,7 +164,7 @@
 
         <div class="w3-third w3-margin-bottom">
           <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-            <img src="https://placehold.it/320" style="width:100%" class="w3-hover-opacity" />
+            <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
             <li class="w3-padding-16">헬로우 드림1</li>
             <li class="w3-padding-16">블로그배포 2018 어워즈 수상! 크몽랭킹 1위! 카페/블로그 광고포스팅 팍팍 도와 드립니다</li>
             <li class="w3-padding-16">
