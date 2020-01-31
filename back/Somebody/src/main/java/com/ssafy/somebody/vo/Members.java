@@ -1,4 +1,7 @@
 package com.ssafy.somebody.vo;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class Members {
 	private String membersId;
 	private String password;
@@ -9,11 +12,13 @@ public class Members {
 	private String account;
 	private String image;
 	private String portfolio;
+	private MultipartFile imageFile;
+	private MultipartFile portfolioFile;
 	private int rank;
 	public Members() {
 	}
 	public Members(String membersId, String password, String name, String email, String address, String phone,
-			String account, String image, String portfolio, int rank) {
+			String account, String image, String portfolioFile, MultipartFile imageFile, MultipartFile file, int rank) {
 		super();
 		this.membersId = membersId;
 		this.password = password;
@@ -23,7 +28,9 @@ public class Members {
 		this.phone = phone;
 		this.account = account;
 		this.image = image;
-		this.portfolio = portfolio;
+		this.imageFile = imageFile;
+		this.portfolio = portfolioFile;
+		this.portfolioFile = file;
 		this.rank = rank;
 	}
 	public String getMembersId() {
@@ -79,6 +86,18 @@ public class Members {
 	}
 	public void setPortfolio(String portfolio) {
 		this.portfolio = portfolio;
+	}
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
+	}
+	public MultipartFile getPortfolioFile() {
+		return portfolioFile;
+	}
+	public void setPortfolioFile(MultipartFile portfolioFile) {
+		this.portfolioFile = portfolioFile;
 	}
 	public int getRank() {
 		return rank;

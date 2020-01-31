@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.ssafy.somebody.dao.MemberDao;
 import com.ssafy.somebody.service.MemberService;
 import com.ssafy.somebody.vo.Members;
+import com.ssafy.somebody.vo.Verify;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -34,5 +35,21 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Members passCheck(String membersId, String password) {
 		return memberDao.passCheck(membersId, password);
+	}
+	@Override
+	public int insertVerify(Verify verify) {
+		return memberDao.insertVerify(verify);
+	}
+	@Override
+	public int updateVerify(Verify verify) {
+		return memberDao.updateVerify(verify);
+	}
+	@Override
+	public Verify searchVerify(String email) {
+		return memberDao.searchVerify(email);
+	}
+	@Override
+	public Verify checkVerify(Verify verify) {
+		return memberDao.checkVerify(verify);
 	}
 }

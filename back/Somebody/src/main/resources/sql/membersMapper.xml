@@ -13,8 +13,10 @@
 
 	<insert id="insertMember" parameterType="Members">
 		INSERT
-		INTO members (members_id, password, name, email, phone)
-		VALUES(#{membersId}, #{password}, #{name}, #{address}, #{phone})
+		INTO members (members_id, password, name, email, 
+		address, phone, account, image, portfolio)
+		VALUES(#{membersId}, SHA2(#{password}, 256), #{name}, #{email}, 
+		#{address}, #{phone}, #{account}, #{image}, #{portfolio})
 	</insert>
 
 	<update id="updateMember" parameterType="Members">
@@ -35,6 +37,30 @@
 	<select id="passCheck" parameterType="Map" resultType="Members">
 		SELECT *
 		FROM members
-		WHERE members_id=#{membersId} and password=#{password}
+		WHERE members_id=#{membersId} and password=SHA2(#{password}, 256)
+	</select>
+	
+	<insert id="insertVerify" parameterType="Verify">
+		INSERT
+		INTO verify (email, code)
+		VALUES(#{email}, #{code})
+	</insert>
+
+	<update id="updateVerify" parameterType="Verify">
+		UPDATE verify
+		SET code=#{code}
+		WHERE email=#{email}
+	</update>
+	
+	<select id="searchVerify" parameterType="string"
+		resultType="Verify">
+		SELECT * From verify 
+		WHERE email=#{email}
+	</select>
+	
+	<select id="checkVerify" parameterType="Verify"
+		resultType="Verify">
+		SELECT * From verify 
+		WHERE email=#{email} and code=#{code}
 	</select>
 </mapper>

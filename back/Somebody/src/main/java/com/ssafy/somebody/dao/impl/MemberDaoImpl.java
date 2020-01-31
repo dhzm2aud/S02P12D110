@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ssafy.somebody.dao.MemberDao;
 import com.ssafy.somebody.vo.Members;
+import com.ssafy.somebody.vo.Verify;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -41,5 +42,21 @@ public class MemberDaoImpl implements MemberDao {
 		map.put("membersId", membersId);
 		map.put("password", password);
 		return sqlsession.selectOne(ns+"passCheck", map);
+	}
+	@Override
+	public int insertVerify(Verify verify) {
+		return sqlsession.insert(ns+"insertVerify", verify);
+	}
+	@Override
+	public int updateVerify(Verify verify) {
+		return sqlsession.update(ns+"updateVerify", verify);
+	}
+	@Override
+	public Verify searchVerify(String email) {
+		return sqlsession.selectOne(ns+"searchVerify", email);
+	}
+	@Override
+	public Verify checkVerify(Verify verify) {
+		return sqlsession.selectOne(ns+"searchVerify", verify);
 	}
 }
