@@ -5,6 +5,8 @@ import BackPage from "../views/BackPage.vue";
 import Home from "../components/home/Home.vue";
 import About from "../components/about/About.vue";
 import CommandCenter from "../components/commandCenter/CommandCenter.vue";
+import SignUp from "../components/front/SignUp.vue";
+import SignUpSecond from "../components/front/SignUpSecond.vue";
 
 Vue.use(VueRouter);
 
@@ -12,7 +14,8 @@ const routes = [
   {
     path: "/",
     name: "FrontPage",
-    component: FrontPage
+    component: FrontPage,
+    meta: { scrollToTop: true }
   },
   {
     path: "/BackPage",
@@ -33,6 +36,18 @@ const routes = [
     path: "/CommandCenter",
     name: "CommandCenter",
     component: CommandCenter
+  },
+  {
+    path: "/SignUp",
+    name: "SignUp",
+    component: SignUp,
+    props: true
+  },
+  {
+    path: "/SignUpSecond",
+    name: "SignUpSecond",
+    component: SignUpSecond,
+    props: true
   }
 ];
 

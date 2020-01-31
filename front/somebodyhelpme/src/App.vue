@@ -22,3 +22,14 @@ export default {
   }
 };
 </script>
+
+<style>
+@font-face {
+  font-family: jjl;
+  src: local("중나좋체_Light"),
+    url("./fonts/중나좋체_Light.ttf") format("truetype");
+}
+#app {
+  font-family: jjl;
+}
+</style>
