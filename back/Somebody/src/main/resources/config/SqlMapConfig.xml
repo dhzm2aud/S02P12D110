@@ -13,6 +13,9 @@
 
 	<mappers>
 		<mapper resource="sql/membersMapper.xml" />
+		<mapper resource="sql/auctionMapper.xml" />
+		<mapper resource="sql/attendMapper.xml" />
+		<mapper resource="sql/noticeMapper.xml" />
 	</mappers>
 </configuration>
 
