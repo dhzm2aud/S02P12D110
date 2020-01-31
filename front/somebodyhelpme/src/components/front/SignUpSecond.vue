@@ -42,7 +42,7 @@
       <p class="w3-right">
         <button
           class="w3-button w3-white w3-border w3-padding-large"
-          @click="$router.push({name : 'SignUp' , params : { userInfo : userInfo}})"
+          @click="$router.push({name : 'SignUp' , params : { userInfo : userInfo , pageInfoDto : pageInfo}})"
         >
           <i class="fa fa-undo"></i> BACK
         </button>
@@ -59,7 +59,7 @@ import http from "@/utils/http-require.js";
 
 export default {
   name: "signUpSecond",
-  props: ["userInfo"],
+  props: ["userInfo","pageInfo"],
   components: {},
   data: () => {
     return {

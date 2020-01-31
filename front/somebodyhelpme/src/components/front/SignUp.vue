@@ -1,6 +1,6 @@
 <template>
   <div id="signup-form">
-    <form class="w3-container w3-card-4 w3-light-grey">
+    <form class="w3-container w3-card-4 w3-light-grey" @submit.prevent>
       <h2 class="w3-center">SIGN UP</h2>
       <p class="w3-center">
         Just Like That
@@ -10,11 +10,11 @@
         </b>
       </p>
 
-      <p>
+      <p :class="ux.isOverlapId">
         <label>
           <span style="color:red">*</span> ID
         </label>
-        <span class="w3-right w3-text-gray" @click="idOverlap">Overlap</span>
+        <span class="w3-right" @click="idOverlap">Overlap</span>
         <input
           class="w3-input w3-border"
           name="membersId"
@@ -37,7 +37,7 @@
         <label>
           <span style="color:red">*</span> Password Retry
         </label>
-        <label v-show="userInfoVo.equalsToPassword" style="color:red">Not Equals</label>
+        <label v-show="!pageInfo.equalsToPassword" style="color:red">Not Equals</label>
         <input
           class="w3-input w3-border"
           name="password-retry"
@@ -51,7 +51,7 @@
         </label>
         <input class="w3-input w3-border" name="name" type="text" v-model="userInfoVo.name" />
       </p>
-      <p>
+      <p :class="ux.isAuthEmail">
         <label>
           <span style="color:red">*</span> Email
         </label>
@@ -104,7 +104,13 @@
 
       <p>
         <label>Phone</label>
-        <input class="w3-input w3-border" name="phone" type="text" v-model="userInfoVo.phone" />
+        <input
+          class="w3-input w3-border"
+          name="phone"
+          type="text"
+          v-model="userInfoVo.phone"
+          placeholder="'-' 없이 입력하세요."
+        />
       </p>
       <p class="w3-right">
         <button class="w3-button w3-white w3-border w3-padding-large" @click="$router.push(`/`)">
@@ -120,30 +126,41 @@
 
 <script>
 import { VueDaumPostcode } from "vue-daum-postcode";
+import http from "@/utils/http-require.js";
 
 export default {
   name: "signUp",
-  props: ["userInfo"],
+  props: ["userInfo", "pageInfoDto"],
   components: {
     VueDaumPostcode
   },
   data: () => {
     return {
+      ux: {
+        isOverlapId: {
+          "w3-text-gray": true
+        },
+        isAuthEmail: {
+          "w3-text-gray": true
+        }
+      },
       userInfoVo: {
-        membersId: "test",
-        password: "test",
-        passwordRetry: "test",
-        name: "test",
-        email: "test@test.com",
+        membersId: "",
+        password: "",
+        passwordRetry: "",
+        name: "",
+        email: "",
         addressObj: "",
         detailAddress: "",
         phone: "",
-        account: "신한-110414698540",
+        account: "",
         image: null,
         portfolio: null,
         rank: 0
       },
       pageInfo: {
+        isOverlapId: false,
+        isAuthEmail: false,
         equalsToPassword: false,
         showFindAddress: false
       }
@@ -151,10 +168,27 @@ export default {
   },
   methods: {
     idOverlap() {
-      console.log("overlap");
+      this.ux.isOverlapId = { "animation vibro": false };
+      http
+        .get(`/member/search/${this.userInfoVo.membersId}`)
+        .then(res => {
+          if (res.data == null || res.data == "") {
+            alert("중복 체크 완료!!");
+            this.pageInfo.isOverlapId = true;
+          } else {
+            alert("중복 아이디입니다.");
+            this.ux.isOverlapId = { "animation vibro w3-text-gray": true };
+          }
+        })
+        .catch(() => {
+          alert("서버 접속 오류!!");
+          this.ux.isOverlapId = { "animation vibro w3-text-gray": true };
+        });
     },
     emailAutho() {
       console.log("auth");
+      this.pageInfo.isAuthEmail = confirm("이메일 인증하기");
+      this.ux.isAuthEmail = { "animation vibro w3-text-gray": !this.pageInfo.isAuthEmail };
     },
     findAddress() {
       console.log(1);
@@ -166,25 +200,29 @@ export default {
         this.userInfoVo.membersId.trim().length > 0 &&
         this.userInfoVo.password.trim().length > 0 &&
         this.userInfoVo.name.trim().length > 0 &&
-        this.userInfoVo.email.trim().length > 0
-      )
+        this.userInfoVo.email.trim().length > 0 &&
+        this.pageInfo.isOverlapId &&
+        this.pageInfo.equalsToPassword &&
+        this.pageInfo.isAuthEmail
+      ) {
         this.$router.push({
           name: "SignUpSecond",
-          params: { userInfo: this.userInfoVo }
+          params: { userInfo: this.userInfoVo, pageInfo: this.pageInfo }
         });
-      else alert("필수 정보를 입력해주세요.");
+      } else alert("필수 정보를 입력해주세요.");
     }
   },
   watch: {
     "userInfoVo.passwordRetry"() {
       this.pageInfo.equalsToPassword =
         this.userInfoVo.password === this.userInfoVo.passwordRetry
-          ? false
-          : true;
+          ? true
+          : false;
     }
   },
   created() {
     if (this.userInfo != null) this.userInfoVo = this.userInfo;
+    if (this.pageInfoDto != null) this.pageInfo = this.pageInfoDto;
   }
 };
 </script>
