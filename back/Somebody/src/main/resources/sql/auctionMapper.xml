@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="auctionMapper">
+
+	<sql id="searchSql">
+		SELECT 
+		a.auction_id, 
+		a.members_id, 
+		m.name, 
+		a.title, 
+		a.sales_time, 
+		a.deadline, 
+		a.contents, 
+		a.file, 
+		a.tag, 
+		a.online 
+		FROM auction AS a JOIN members AS m
+		ON a.members_id = m.members_id
+	</sql>
+	
+	<select id="searchAuction" parameterType="String"
+		resultType="Auction">
+		<include refid="searchSql" />
+		WHERE a.auction_id=#{value}
+	</select>
+	
+	<select id="searchAuctionByTag" parameterType="String"
+		resultType="Auction">
+		<include refid="searchSql" />
+		WHERE a.tag like '%${value}%'
+	</select>
+	
+	<select id="searchAuctionByMembers" parameterType="String"
+		resultType="Auction">
+		<include refid="searchSql" />
+		WHERE a.members_id=#{value}
+	</select>
+	
+	<select id="searchAllAuction" resultType="Auction">
+		<include refid="searchSql" />
+		WHERE a.sales_time > NOW();
+	</select>
+	
+	<select id="searchAllAuctionDesc" resultType="Auction">
+		<include refid="searchSql" />
+		WHERE a.sales_time > NOW() 
+		ORDER BY a.sales_time DESC;
+	</select>
+
+	<insert id="insertAuction" parameterType="Auction">
+		INSERT
+		INTO auction (members_id,title,
+		sales_time,deadline,contents,file,tag,
+		online)
+		VALUES(#{membersId},#{title},
+		STR_TO_DATE(#{sales_time}, '%Y-%m-%d'),#{deadline},#{contents},#{file},#{tag},
+		${online})
+	</insert>
+
+	<update id="updateAuction" parameterType="Auction">
+		UPDATE auction
+		SET title=#{title}, contents=#{contents}, deadline=#{deadline}, 
+		file=#{file}, tag=#{tag}, online=${online}
+		WHERE auction_id=#{auctionId}
+	</update>
+
+	<delete id="deleteAuction" parameterType="String">
+		DELETE
+		FROM auction
+		WHERE
+		auction_id=	#{value}
+	</delete>
+	
+</mapper>

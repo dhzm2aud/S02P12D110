@@ -1,12 +1,9 @@
 <template>
-  <div id="menual">메뉴얼</div>
+  <div id="menual" class="w3-center w3-padding-64">
+    <img src="https://via.placeholder.com/550" />
+  </div>
 </template>
 
 <script>
-export default {
-  name: "메뉴얼"
-};
+export default {};
 </script>
-
-<style>
-</style>

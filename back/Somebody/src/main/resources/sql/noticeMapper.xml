@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="noticeMapper">
+
+	<insert id="insertNotice" parameterType="notice">
+		insert into notice(title,contents,members_id,date) value(#{title},#{contents},#{membersId},current_time())                                                    
+	</insert>
+	
+	<select id="searchAllNotice" resultType="notice">
+		select * from notice order by notice_id desc limit 100
+	</select>
+	
+	<select id="searchNoticeByNoticeId" parameterType="String" resultType="notice">
+		select * from notice where notice_id = #{value}
+	</select>
+	
+	
+	<select id="searchNoticeByContent" parameterType="String" resultType="notice">
+		select * from notice where title like "%${value}%"
+	</select>
+		
+	<delete id="deleteNotice" parameterType="String">
+		delete from notice where notice_id = #{value}
+	</delete>
+	
+	<update id="updateNotice" parameterType="notice">
+		update notice
+		set title=#{title},contents=#{contents},members_id=#{membersId},date= current_time()
+		where notice_id=#{noticeId}
+	</update>
+			
+</mapper>

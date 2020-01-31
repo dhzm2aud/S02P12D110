@@ -5,10 +5,15 @@ import BackPage from "../views/BackPage.vue";
 import Home from "../components/home/Home.vue";
 import About from "../components/about/About.vue";
 import CommandCenter from "../components/commandCenter/CommandCenter.vue";
+
 import NoticeDetail from "../components/commandCenter/NoticeDetail.vue";
 import NoticeInsert from "../components/commandCenter/NoticeInsert.vue";
 import NoticeUpdate from "../components/commandCenter/NoticeUpdate.vue";
 import Notice from "../components/commandCenter/Notice.vue";
+
+
+import SignUp from "../components/front/SignUp.vue";
+import SignUpSecond from "../components/front/SignUpSecond.vue";
 
 
 Vue.use(VueRouter);
@@ -16,7 +21,8 @@ Vue.use(VueRouter);
 const routes = [{
     path: "/",
     name: "FrontPage",
-    component: FrontPage
+    component: FrontPage,
+    meta: { scrollToTop: true }
   },
   {
     path: "/BackPage",
@@ -39,6 +45,7 @@ const routes = [{
     component: CommandCenter
   },
   {
+
     path: "/Notice",
     name: "Notice",
     component: Notice
@@ -59,6 +66,17 @@ const routes = [{
     path: "/NoticeUpdate",
     name: "NoticeUpdate",
     component: NoticeUpdate,
+
+    path: "/SignUp",
+    name: "SignUp",
+    component: SignUp,
+    props: true
+  },
+  {
+    path: "/SignUpSecond",
+    name: "SignUpSecond",
+    component: SignUpSecond,
+
     props: true
   }
 
