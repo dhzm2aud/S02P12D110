@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.somebody.service.NoticeService;
+import com.ssafy.somebody.vo.BoolResult;
 import com.ssafy.somebody.vo.Notice;
 
 @RestController
@@ -27,14 +28,17 @@ public class NoticeController {
 	NoticeService noticeService;
 
 	@PostMapping("/insert")
-	public ResponseEntity insertNotice(@RequestBody Notice notice) throws Exception {
+	public ResponseEntity<BoolResult> insertNotice(@RequestBody Notice notice) throws Exception {
 		int result = 0;
+		BoolResult nr = new BoolResult();
 		try {
 			result = noticeService.insertNotice(notice);
 			System.out.println(result);
-			return new ResponseEntity(HttpStatus.OK);
+			nr.setState("succ");
+			return new ResponseEntity(nr, HttpStatus.OK);
 		} catch (Exception e) {
 			System.out.println(e);
+			nr.setState("fail");
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 	}
@@ -68,9 +72,11 @@ public class NoticeController {
 	@DeleteMapping("/delete/{noticeId}")
 	public ResponseEntity deleteNotice(@PathVariable String noticeId) throws Exception{
 		int result =0;
+		BoolResult nr = new BoolResult();
 		try {
 			result = noticeService.deleteNotice(noticeId);
 			System.out.println(result);
+			nr.setState("succ");
 			return new ResponseEntity(HttpStatus.OK);
 		}catch(Exception e) {
 			System.out.println(e);
@@ -79,12 +85,15 @@ public class NoticeController {
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity updateNotice(@RequestBody Notice notice) throws Exception{
+	public ResponseEntity<BoolResult> updateNotice(@RequestBody Notice notice) throws Exception{
 		int result =0;
+		System.out.println(notice);
+		BoolResult nr = new BoolResult();
 		try {
 			result = noticeService.updateNotice(notice);
 			System.out.println(result);
-			return new ResponseEntity(HttpStatus.OK);
+			nr.setState("succ");
+			return new ResponseEntity(nr, HttpStatus.OK);
 		}catch(Exception e) {
 			System.out.println(e);
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -102,6 +111,5 @@ public class NoticeController {
 			System.out.println(e);
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
-		
 	}
 }

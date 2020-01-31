@@ -8,7 +8,7 @@
 	</insert>
 	
 	<select id="searchAllNotice" resultType="notice">
-		select * from notice order by notice_id desc
+		select * from notice order by notice_id desc limit 100
 	</select>
 	
 	<select id="searchNoticeByNoticeId" parameterType="String" resultType="notice">
