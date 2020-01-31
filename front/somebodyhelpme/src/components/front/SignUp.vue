@@ -14,7 +14,11 @@
         <label>
           <span style="color:red">*</span> ID
         </label>
-        <span class="w3-right" @click="idOverlap">Overlap</span>
+        <span
+          class="w3-right"
+          :class="{ 'w3-text-gray' : !pageInfo.isOverlapId , 'w3-text-green' : pageInfo.isOverlapId }"
+          @click="idOverlap"
+        >Overlap</span>
         <input
           class="w3-input w3-border"
           name="membersId"
@@ -55,8 +59,25 @@
         <label>
           <span style="color:red">*</span> Email
         </label>
-        <span class="w3-right w3-text-gray" @click="emailAutho">Auth</span>
+        <span
+          class="w3-right"
+          :class="{ 'w3-text-gray' : !pageInfo.isRequestEmail , 'w3-text-green' : pageInfo.isRequestEmail }"
+          @click="requestEmail"
+        >Requ</span>
         <input class="w3-input w3-border" name="email" type="email" v-model="userInfoVo.email" />
+        <template v-if="pageInfo.isRequestEmail">
+          <span
+            class="w3-right"
+            @click="emailAutho"
+            :class="{ 'w3-text-gray' : !pageInfo.isAuthEmail , 'w3-text-green' : pageInfo.isAuthEmail }"
+          >Auth</span>
+          <input
+            class="w3-input w3-border"
+            name="email"
+            v-model="userInfoVo.code"
+            placeholder="Code"
+          />
+        </template>
       </p>
       <p>
         <label>
@@ -137,12 +158,8 @@ export default {
   data: () => {
     return {
       ux: {
-        isOverlapId: {
-          "w3-text-gray": true
-        },
-        isAuthEmail: {
-          "w3-text-gray": true
-        }
+        isOverlapId: {},
+        isAuthEmail: {}
       },
       userInfoVo: {
         membersId: "",
@@ -156,13 +173,15 @@ export default {
         account: "",
         image: null,
         portfolio: null,
-        rank: 0
+        rank: 0,
+        code: ""
       },
       pageInfo: {
         isOverlapId: false,
         isAuthEmail: false,
         equalsToPassword: false,
-        showFindAddress: false
+        showFindAddress: false,
+        isRequestEmail: false
       }
     };
   },
@@ -170,25 +189,65 @@ export default {
     idOverlap() {
       this.ux.isOverlapId = { "animation vibro": false };
       http
-        .get(`/member/search/${this.userInfoVo.membersId}`)
+        .get(`/member/search/${this.userInfoVo.membersId.trim()}`)
         .then(res => {
           if (res.data == null || res.data == "") {
             alert("중복 체크 완료!!");
             this.pageInfo.isOverlapId = true;
           } else {
             alert("중복 아이디입니다.");
-            this.ux.isOverlapId = { "animation vibro w3-text-gray": true };
+            this.ux.isOverlapId = { "animation vibro": true };
           }
         })
         .catch(() => {
           alert("서버 접속 오류!!");
-          this.ux.isOverlapId = { "animation vibro w3-text-gray": true };
+          this.ux.isOverlapId = { "animation vibro": true };
         });
     },
     emailAutho() {
-      console.log("auth");
-      this.pageInfo.isAuthEmail = confirm("이메일 인증하기");
-      this.ux.isAuthEmail = { "animation vibro w3-text-gray": !this.pageInfo.isAuthEmail };
+      if (this.userInfoVo.code.trim().length > 0) {
+        http
+          .post(`/member/checkEmail`, {
+            email: this.userInfoVo.email,
+            code: this.userInfoVo.code
+          })
+          .then(res => {
+            if (res.data == null || res.data == "") {
+              alert("이메일 인증 실패했습니다.");
+              this.ux.isAuthEmail = { "animation vibro": true };
+            } else {
+              alert("이메일 인증 성공했습니다.");
+              this.pageInfo.isAuthEmail = true;
+            }
+          })
+          .catch(() => {
+            alert("서버 접속 오류");
+            this.ux.isAuthEmail = { "animation vibro": true };
+          });
+      } else {
+        alert("코드를 입력해주세요.");
+      }
+    },
+    requestEmail() {
+      if (this.userInfoVo.email.trim().length > 0) {
+        http
+          .post(`/member/sendEmail`, { email: this.userInfoVo.email.trim() })
+          .then(res => {
+            if (res.data == null || res.data == "") {
+              alert("이메일 인증코드 전송 실패");
+              this.pageInfo.isRequestEmail = false;
+            } else {
+              alert("이메일에 인증코드를 전송했습니다.");
+              this.pageInfo.isRequestEmail = true;
+            }
+          })
+          .catch(() => {
+            alert("서버 접속 오류");
+            this.pageInfo.isRequestEmail = false;
+          });
+      } else {
+        alert("이메일을 입력하여주세요");
+      }
     },
     findAddress() {
       console.log(1);
