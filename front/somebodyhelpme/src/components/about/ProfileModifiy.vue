@@ -4,7 +4,7 @@
     <div class="w3-section">
       <label>Profile Picture</label>
       <br />
-      <img src alt="프로필" onerror="this.src='@/assets/image/unnamed.png'" />
+      <img src alt="프로필" onerror />
       <input class="w3-input w3-border" type="file" name="profilepicture" />
     </div>
 
