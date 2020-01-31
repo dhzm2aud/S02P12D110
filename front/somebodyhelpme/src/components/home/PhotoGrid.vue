@@ -1,14 +1,8 @@
 <template>
   <div>
-    <!-- First Photo Grid-->
     <div class="w3-row-padding">
       <div class="w3-third w3-container w3-margin-bottom">
-        <img
-          src="https://placehold.it/320"
-          alt="Norway"
-          style="width:100%"
-          class="w3-hover-opacity"
-        />
+        <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
         <div class="w3-container w3-white">
           <p>
             <b>Lorem Ipsum</b>
@@ -17,12 +11,7 @@
         </div>
       </div>
       <div class="w3-third w3-container w3-margin-bottom">
-        <img
-          src="https://placehold.it/320"
-          alt="Norway"
-          style="width:100%"
-          class="w3-hover-opacity"
-        />
+        <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
         <div class="w3-container w3-white">
           <p>
             <b>Lorem Ipsum</b>
@@ -31,12 +20,7 @@
         </div>
       </div>
       <div class="w3-third w3-container">
-        <img
-          src="https://placehold.it/320"
-          alt="Norway"
-          style="width:100%"
-          class="w3-hover-opacity"
-        />
+        <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
         <div class="w3-container w3-white">
           <p>
             <b>Lorem Ipsum</b>
@@ -46,15 +30,9 @@
       </div>
     </div>
 
-    <!-- Second Photo Grid-->
     <div class="w3-row-padding">
       <div class="w3-third w3-container w3-margin-bottom">
-        <img
-          src="https://placehold.it/320"
-          alt="Norway"
-          style="width:100%"
-          class="w3-hover-opacity"
-        />
+        <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
         <div class="w3-container w3-white">
           <p>
             <b>Lorem Ipsum</b>
@@ -63,12 +41,7 @@
         </div>
       </div>
       <div class="w3-third w3-container w3-margin-bottom">
-        <img
-          src="https://placehold.it/320"
-          alt="Norway"
-          style="width:100%"
-          class="w3-hover-opacity"
-        />
+        <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
         <div class="w3-container w3-white">
           <p>
             <b>Lorem Ipsum</b>
@@ -77,12 +50,7 @@
         </div>
       </div>
       <div class="w3-third w3-container">
-        <img
-          src="https://placehold.it/320"
-          alt="Norway"
-          style="width:100%"
-          class="w3-hover-opacity"
-        />
+        <img src="https://placehold.it/320x240" style="width:100%" class="w3-hover-opacity" />
         <div class="w3-container w3-white">
           <p>
             <b>Lorem Ipsum</b>
@@ -92,7 +60,6 @@
       </div>
     </div>
 
-    <!-- Pagination -->
     <div class="w3-center w3-padding-32">
       <div class="w3-bar">
         <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
