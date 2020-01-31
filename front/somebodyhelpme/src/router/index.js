@@ -11,14 +11,13 @@ import NoticeInsert from "../components/commandCenter/NoticeInsert.vue";
 import NoticeUpdate from "../components/commandCenter/NoticeUpdate.vue";
 import Notice from "../components/commandCenter/Notice.vue";
 
-
 import SignUp from "../components/front/SignUp.vue";
 import SignUpSecond from "../components/front/SignUpSecond.vue";
 
-
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+  {
     path: "/",
     name: "FrontPage",
     component: FrontPage,
@@ -45,7 +44,6 @@ const routes = [{
     component: CommandCenter
   },
   {
-
     path: "/Notice",
     name: "Notice",
     component: Notice
@@ -60,13 +58,14 @@ const routes = [{
   {
     path: "/NoticeInsert",
     name: "NoticeInsert",
-    component: NoticeInsert,
+    component: NoticeInsert
   },
   {
     path: "/NoticeUpdate",
     name: "NoticeUpdate",
-    component: NoticeUpdate,
-
+    component: NoticeUpdate
+  },
+  {
     path: "/SignUp",
     name: "SignUp",
     component: SignUp,
@@ -76,10 +75,8 @@ const routes = [{
     path: "/SignUpSecond",
     name: "SignUpSecond",
     component: SignUpSecond,
-
     props: true
   }
-
 ];
 
 const router = new VueRouter({

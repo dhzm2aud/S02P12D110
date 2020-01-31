@@ -21,95 +21,95 @@ import com.ssafy.somebody.vo.Notice;
 
 @RestController
 @RequestMapping("/notice")
-@CrossOrigin(origins = { "*" }, maxAge = 6000)
+@CrossOrigin(origins = {"*"}, maxAge = 6000)
 public class NoticeController {
 
-	@Autowired
-	NoticeService noticeService;
+    @Autowired
+    NoticeService noticeService;
 
-	@PostMapping("/insert")
-	public ResponseEntity<BoolResult> insertNotice(@RequestBody Notice notice) throws Exception {
-		int result = 0;
-		BoolResult nr = new BoolResult();
-		try {
-			result = noticeService.insertNotice(notice);
-			System.out.println(result);
-			nr.setState("succ");
-			return new ResponseEntity(nr, HttpStatus.OK);
-		} catch (Exception e) {
-			System.out.println(e);
-			nr.setState("fail");
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
-	}
+    @PostMapping("/insert")
+    public ResponseEntity<BoolResult> insertNotice(@RequestBody Notice notice) throws Exception {
+        int result = 0;
+        BoolResult nr = new BoolResult();
+        try {
+            result = noticeService.insertNotice(notice);
+            System.out.println(result);
+            nr.setState("succ");
+            return new ResponseEntity(nr, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e);
+            nr.setState("fail");
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+    }
 
-	@GetMapping("/searchAll")
-	public ResponseEntity<List<Notice>> searchAllNotice() throws Exception {
-		List<Notice> list = noticeService.searchAllNotice();
-		if (list.size() != 0) {
-			for (Notice n : list) {
-				System.out.println(n);
-			}
-			return new ResponseEntity<List<Notice>>(list, HttpStatus.OK);
-		} else {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
-	}
-	
-	@GetMapping("/search/{content}")
-	public ResponseEntity<List<Notice>> searchNoticeByContent(@PathVariable String content)throws Exception{
-		List<Notice> list = noticeService.searchNoticeByContent(content);
-		if(list.size()!=0) {
-			for(Notice n : list) {
-				System.out.println(n);
-			}
-			return new ResponseEntity<List<Notice>>(list,HttpStatus.OK);
-		}
-		
-		return new ResponseEntity(HttpStatus.NO_CONTENT);
-	}
-	
-	@DeleteMapping("/delete/{noticeId}")
-	public ResponseEntity deleteNotice(@PathVariable String noticeId) throws Exception{
-		int result =0;
-		BoolResult nr = new BoolResult();
-		try {
-			result = noticeService.deleteNotice(noticeId);
-			System.out.println(result);
-			nr.setState("succ");
-			return new ResponseEntity(HttpStatus.OK);
-		}catch(Exception e) {
-			System.out.println(e);
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
-	}
-	
-	@PutMapping("/update")
-	public ResponseEntity<BoolResult> updateNotice(@RequestBody Notice notice) throws Exception{
-		int result =0;
-		System.out.println(notice);
-		BoolResult nr = new BoolResult();
-		try {
-			result = noticeService.updateNotice(notice);
-			System.out.println(result);
-			nr.setState("succ");
-			return new ResponseEntity(nr, HttpStatus.OK);
-		}catch(Exception e) {
-			System.out.println(e);
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
-	}
-	
-	@GetMapping("/searchByNoticeId/{noticeId}")
-	public ResponseEntity<Notice> searchNoticeByNoticeId(@PathVariable String noticeId)throws Exception{
-		Notice notice;
-		try {
-			notice = noticeService.searchNoticeByNoticeId(noticeId);
-			System.out.println(notice);
-			return new ResponseEntity<Notice>(notice,HttpStatus.OK);
-		}catch(Exception e) {
-			System.out.println(e);
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
-	}
+    @GetMapping("/searchAll")
+    public ResponseEntity<List<Notice>> searchAllNotice() throws Exception {
+        List<Notice> list = noticeService.searchAllNotice();
+        if (list.size() != 0) {
+            for (Notice n : list) {
+                System.out.println(n);
+            }
+            return new ResponseEntity<List<Notice>>(list, HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @GetMapping("/search/{content}")
+    public ResponseEntity<List<Notice>> searchNoticeByContent(@PathVariable String content) throws Exception {
+        List<Notice> list = noticeService.searchNoticeByContent(content);
+        if (list.size() != 0) {
+            for (Notice n : list) {
+                System.out.println(n);
+            }
+            return new ResponseEntity<List<Notice>>(list, HttpStatus.OK);
+        }
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("/delete/{noticeId}")
+    public ResponseEntity deleteNotice(@PathVariable String noticeId) throws Exception {
+        int result = 0;
+        BoolResult nr = new BoolResult();
+        try {
+            result = noticeService.deleteNotice(noticeId);
+            System.out.println(result);
+            nr.setState("succ");
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<BoolResult> updateNotice(@RequestBody Notice notice) throws Exception {
+        int result = 0;
+        System.out.println(notice);
+        BoolResult nr = new BoolResult();
+        try {
+            result = noticeService.updateNotice(notice);
+            System.out.println(result);
+            nr.setState("succ");
+            return new ResponseEntity(nr, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @GetMapping("/searchByNoticeId/{noticeId}")
+    public ResponseEntity<Notice> searchNoticeByNoticeId(@PathVariable String noticeId) throws Exception {
+        Notice notice;
+        try {
+            notice = noticeService.searchNoticeByNoticeId(noticeId);
+            System.out.println(notice);
+            return new ResponseEntity<Notice>(notice, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+    }
 }

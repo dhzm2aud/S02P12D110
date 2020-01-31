@@ -12,33 +12,33 @@ import com.ssafy.somebody.vo.Attend;
 @Repository
 public class AttendDaoImpl implements AttendDao {
 
-	@Autowired
-	private SqlSession sqlsession;
-	
-	private String ns = "attendMapper.";
+    @Autowired
+    private SqlSession sqlsession;
 
-	@Override
-	public int attend(Attend attend) {
-		return sqlsession.insert(ns+"attend", attend);
-	}
+    private String ns = "attendMapper.";
 
-	@Override
-	public int cancelAttend(String attendId) {
-		return sqlsession.delete(ns+"cancleAttend", attendId);
-	}
+    @Override
+    public int attend(Attend attend) {
+        return sqlsession.insert(ns + "attend", attend);
+    }
 
-	@Override
-	public List<Attend> searchAttendByAuctionId(String auctionId) {
-		return sqlsession.selectList(ns+"searchAttendByAuctionId", auctionId);
-	}
+    @Override
+    public int cancelAttend(String attendId) {
+        return sqlsession.delete(ns + "cancleAttend", attendId);
+    }
 
-	@Override
-	public List<Attend> searchAttendByMembersId(String membersId) {
-		return sqlsession.selectList(ns+"searchAttendByMembersId", membersId);
-	}
+    @Override
+    public List<Attend> searchAttendByAuctionId(String auctionId) {
+        return sqlsession.selectList(ns + "searchAttendByAuctionId", auctionId);
+    }
 
-	@Override
-	public int pickAttend(String AttendId) {
-		return sqlsession.update(ns+"pickAttend", AttendId);
-	}
+    @Override
+    public List<Attend> searchAttendByMembersId(String membersId) {
+        return sqlsession.selectList(ns + "searchAttendByMembersId", membersId);
+    }
+
+    @Override
+    public int pickAttend(String AttendId) {
+        return sqlsession.update(ns + "pickAttend", AttendId);
+    }
 }

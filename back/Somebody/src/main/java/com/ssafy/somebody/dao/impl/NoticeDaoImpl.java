@@ -11,39 +11,39 @@ import com.ssafy.somebody.vo.Notice;
 
 @Repository
 public class NoticeDaoImpl implements NoticeDao {
-	
-	@Autowired
-	SqlSession sqlsession;
-	private final String ns = "noticeMapper.";
-	
-	@Override
-	public List<Notice> searchAllNotice() {
-		return sqlsession.selectList(ns+"searchAllNotice");
-	}
 
-	@Override
-	public int insertNotice(Notice notice) {
-		return sqlsession.insert(ns+"insertNotice",notice);
-	}
+    @Autowired
+    SqlSession sqlsession;
+    private final String ns = "noticeMapper.";
 
-	@Override
-	public int updateNotice(Notice notice) {
-		return sqlsession.update(ns+"updateNotice",notice);
-	}
+    @Override
+    public List<Notice> searchAllNotice() {
+        return sqlsession.selectList(ns + "searchAllNotice");
+    }
 
-	@Override
-	public int deleteNotice(String noticeId) {
-		return sqlsession.delete(ns+"deleteNotice",noticeId);
-	}
+    @Override
+    public int insertNotice(Notice notice) {
+        return sqlsession.insert(ns + "insertNotice", notice);
+    }
 
-	@Override
-	public List<Notice> searchNoticeByContent(String content) {
-		return sqlsession.selectList(ns+"searchNoticeByContent",content);
-	}
+    @Override
+    public int updateNotice(Notice notice) {
+        return sqlsession.update(ns + "updateNotice", notice);
+    }
 
-	@Override
-	public Notice searchNoticeByNoticeId(String noticeId) {
-		return sqlsession.selectOne(ns+"searchNoticeByNoticeId",noticeId);
-	}
-	
+    @Override
+    public int deleteNotice(String noticeId) {
+        return sqlsession.delete(ns + "deleteNotice", noticeId);
+    }
+
+    @Override
+    public List<Notice> searchNoticeByContent(String content) {
+        return sqlsession.selectList(ns + "searchNoticeByContent", content);
+    }
+
+    @Override
+    public Notice searchNoticeByNoticeId(String noticeId) {
+        return sqlsession.selectOne(ns + "searchNoticeByNoticeId", noticeId);
+    }
+
 }

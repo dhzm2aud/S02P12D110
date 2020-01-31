@@ -1,118 +1,119 @@
 package com.ssafy.somebody.vo;
 
 public class Auction {
-	private String auctionId;
-	private String membersId;
-	private String name;
-	private String title;
-	private String sales_time;
-	private String deadline;
-	private String contents;
-	private String file;
-	private String tag;
-	private byte online;
-	
-	public Auction() {	}
+    private String auctionId;
+    private String membersId;
+    private String name;
+    private String title;
+    private String sales_time;
+    private String deadline;
+    private String contents;
+    private String file;
+    private String tag;
+    private byte online;
 
-	public Auction(String auctionId, String membersId, String name, String title, String sales_time, String deadline,
-			String contents, String file, String tag, byte online) {
-		this.auctionId = auctionId;
-		this.membersId = membersId;
-		this.name = name;
-		this.title = title;
-		this.sales_time = sales_time;
-		this.deadline = deadline;
-		this.contents = contents;
-		this.file = file;
-		this.tag = tag;
-		this.online = online;
-	}
+    public Auction() {
+    }
 
-	public String getAuctionId() {
-		return auctionId;
-	}
+    public Auction(String auctionId, String membersId, String name, String title, String sales_time, String deadline,
+                   String contents, String file, String tag, byte online) {
+        this.auctionId = auctionId;
+        this.membersId = membersId;
+        this.name = name;
+        this.title = title;
+        this.sales_time = sales_time;
+        this.deadline = deadline;
+        this.contents = contents;
+        this.file = file;
+        this.tag = tag;
+        this.online = online;
+    }
 
-	public void setAuctionId(String auctionId) {
-		this.auctionId = auctionId;
-	}
+    public String getAuctionId() {
+        return auctionId;
+    }
 
-	public String getMembersId() {
-		return membersId;
-	}
+    public void setAuctionId(String auctionId) {
+        this.auctionId = auctionId;
+    }
 
-	public void setMembersId(String membersId) {
-		this.membersId = membersId;
-	}
+    public String getMembersId() {
+        return membersId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setMembersId(String membersId) {
+        this.membersId = membersId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getSales_time() {
-		return sales_time;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setSales_time(String sales_time) {
-		this.sales_time = sales_time;
-	}
+    public String getSales_time() {
+        return sales_time;
+    }
 
-	public String getDeadline() {
-		return deadline;
-	}
+    public void setSales_time(String sales_time) {
+        this.sales_time = sales_time;
+    }
 
-	public void setDeadline(String deadline) {
-		this.deadline = deadline;
-	}
+    public String getDeadline() {
+        return deadline;
+    }
 
-	public String getContents() {
-		return contents;
-	}
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
+    }
 
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
+    public String getContents() {
+        return contents;
+    }
 
-	public String getFile() {
-		return file;
-	}
+    public void setContents(String contents) {
+        this.contents = contents;
+    }
 
-	public void setFile(String file) {
-		this.file = file;
-	}
+    public String getFile() {
+        return file;
+    }
 
-	public String getTag() {
-		return tag;
-	}
+    public void setFile(String file) {
+        this.file = file;
+    }
 
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
+    public String getTag() {
+        return tag;
+    }
 
-	public byte isOnline() {
-		return online;
-	}
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
-	public void setOnline(byte online) {
-		this.online = online;
-	}
+    public byte isOnline() {
+        return online;
+    }
 
-	@Override
-	public String toString() {
-		return "Auction [auctionId=" + auctionId + ", membersId=" + membersId + ", name=" + name + ", title=" + title
-				+ ", sales_time=" + sales_time + ", deadline=" + deadline + ", contents=" + contents + ", file=" + file
-				+ ", tag=" + tag + ", online=" + online + "]";
-	}
-	
+    public void setOnline(byte online) {
+        this.online = online;
+    }
+
+    @Override
+    public String toString() {
+        return "Auction [auctionId=" + auctionId + ", membersId=" + membersId + ", name=" + name + ", title=" + title
+                + ", sales_time=" + sales_time + ", deadline=" + deadline + ", contents=" + contents + ", file=" + file
+                + ", tag=" + tag + ", online=" + online + "]";
+    }
+
 }

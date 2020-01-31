@@ -11,38 +11,38 @@ import com.ssafy.somebody.vo.Feedback;
 
 @Service
 public class FeedbackServiceImpl implements FeedbackService {
-	
-	@Autowired
-	FeedbackDao feedbackDao;
 
-	@Override
-	public List<Feedback> searchAllFeedback() {
-		return feedbackDao.searchAllFeedback();
-	}
+    @Autowired
+    FeedbackDao feedbackDao;
 
-	@Override
-	public List<Feedback> searchFeedbackByMembersId(String membersId) {
-		return feedbackDao.searchFeedbackByMembersId(membersId);
-	}
+    @Override
+    public List<Feedback> searchAllFeedback() {
+        return feedbackDao.searchAllFeedback();
+    }
 
-	@Override
-	public Feedback searchFeedbackByFeedbackId(String feedbackId) {
-		return feedbackDao.searchFeedbackByFeedbackId(feedbackId);
-	}
+    @Override
+    public List<Feedback> searchFeedbackByMembersId(String membersId) {
+        return feedbackDao.searchFeedbackByMembersId(membersId);
+    }
 
-	@Override
-	public int insertFeedback(Feedback feedback) {
-		return feedbackDao.insertFeedback(feedback);
-	}
+    @Override
+    public Feedback searchFeedbackByFeedbackId(String feedbackId) {
+        return feedbackDao.searchFeedbackByFeedbackId(feedbackId);
+    }
 
-	@Override
-	public int updateFeedback(Feedback feedback) {
-		return feedbackDao.updateFeedback(feedback);
-	}
+    @Override
+    public int insertFeedback(Feedback feedback) {
+        return feedbackDao.insertFeedback(feedback);
+    }
 
-	@Override
-	public int deleteFeedback(String feedbackId) {
-		return feedbackDao.deleteFeedback(feedbackId);
-	}
-	
+    @Override
+    public int updateFeedback(Feedback feedback) {
+        return feedbackDao.updateFeedback(feedback);
+    }
+
+    @Override
+    public int deleteFeedback(String feedbackId) {
+        return feedbackDao.deleteFeedback(feedbackId);
+    }
+
 }

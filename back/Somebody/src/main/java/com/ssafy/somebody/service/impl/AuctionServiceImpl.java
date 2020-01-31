@@ -12,47 +12,47 @@ import com.ssafy.somebody.vo.Auction;
 @Service
 public class AuctionServiceImpl implements AuctionService {
 
-	@Autowired
-	private AuctionDao auctionDao;
-	
-	@Override
-	public int insertAction(Auction auction) {
-		return auctionDao.insertAction(auction);
-	}
+    @Autowired
+    private AuctionDao auctionDao;
 
-	@Override
-	public int updateAuction(Auction auction) {
-		return auctionDao.updateAuction(auction);
-	}
+    @Override
+    public int insertAction(Auction auction) {
+        return auctionDao.insertAction(auction);
+    }
 
-	@Override
-	public int deleteAuction(String auctionId) {
-		return auctionDao.deleteAuction(auctionId);
-	}
+    @Override
+    public int updateAuction(Auction auction) {
+        return auctionDao.updateAuction(auction);
+    }
 
-	@Override
-	public Auction searchAuction(String auctionId) {
-		return auctionDao.searchAuction(auctionId);
-	}
+    @Override
+    public int deleteAuction(String auctionId) {
+        return auctionDao.deleteAuction(auctionId);
+    }
 
-	@Override
-	public List<Auction> searchAuctionByTag(String tag) {
-		return auctionDao.searchAuctionByTag(tag);
-	}
+    @Override
+    public Auction searchAuction(String auctionId) {
+        return auctionDao.searchAuction(auctionId);
+    }
 
-	@Override
-	public List<Auction> searchAuctionByMembers(String memberId) {
-		return auctionDao.searchAuctionByMembers(memberId);
-	}
+    @Override
+    public List<Auction> searchAuctionByTag(String tag) {
+        return auctionDao.searchAuctionByTag(tag);
+    }
 
-	@Override
-	public List<Auction> searchAllAuction() {
-		return auctionDao.searchAllAuction();
-	}
+    @Override
+    public List<Auction> searchAuctionByMembers(String memberId) {
+        return auctionDao.searchAuctionByMembers(memberId);
+    }
 
-	@Override
-	public List<Auction> searchAllAuctionDesc() {
-		return auctionDao.searchAllAuctionDesc();
-	}
+    @Override
+    public List<Auction> searchAllAuction() {
+        return auctionDao.searchAllAuction();
+    }
+
+    @Override
+    public List<Auction> searchAllAuctionDesc() {
+        return auctionDao.searchAllAuctionDesc();
+    }
 
 }
