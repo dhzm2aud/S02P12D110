@@ -5,7 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    contentPage: "home"
+    contentPage: "home",
+    user: {
+      id: "test"
+    }
   },
   mutations: {},
   actions: {},
