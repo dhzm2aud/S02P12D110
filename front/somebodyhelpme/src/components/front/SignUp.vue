@@ -25,8 +25,9 @@
           type="text"
           v-model="userInfoVo.membersId"
         />
+        <span class="error">{{error.id}}</span>
       </p>
-      <p>
+      <p :class="ux.password">
         <label>
           <span style="color:red">*</span> Password
         </label>
@@ -37,7 +38,7 @@
           v-model="userInfoVo.password"
         />
       </p>
-      <p>
+      <p :class="ux.password">
         <label>
           <span style="color:red">*</span> Password Retry
         </label>
@@ -48,12 +49,14 @@
           type="password"
           v-model="userInfoVo.passwordRetry"
         />
+        <span class="error">{{error.password}}</span>
       </p>
-      <p>
+      <p :class="ux.name">
         <label>
           <span style="color:red">*</span> Name
         </label>
         <input class="w3-input w3-border" name="name" type="text" v-model="userInfoVo.name" />
+        <span class="error">{{error.name}}</span>
       </p>
       <p :class="ux.isAuthEmail">
         <label>
@@ -65,6 +68,7 @@
           @click="requestEmail"
         >Requ</span>
         <input class="w3-input w3-border" name="email" type="email" v-model="userInfoVo.email" />
+        <span class="error">{{error.email}}</span>
         <template v-if="pageInfo.isRequestEmail">
           <span
             class="w3-right"
@@ -77,6 +81,7 @@
             v-model="userInfoVo.code"
             placeholder="Code"
           />
+          <span class="error">{{error.code}}</span>
         </template>
       </p>
       <p>
@@ -159,7 +164,9 @@ export default {
     return {
       ux: {
         isOverlapId: {},
-        isAuthEmail: {}
+        isAuthEmail: {},
+        name: {},
+        password: {}
       },
       userInfoVo: {
         membersId: "",
@@ -182,27 +189,68 @@ export default {
         equalsToPassword: false,
         showFindAddress: false,
         isRequestEmail: false
+      },
+      error: {
+        id: "",
+        code: "",
+        email: "",
+        name: "",
+        password: ""
       }
     };
   },
   methods: {
+    aniVibro(sbj, text = "필수 항목을 채워주세요.") {
+      if (sbj == "id") {
+        this.ux.isOverlapId = { "animation vibro": true };
+        setTimeout(() => {
+          this.ux.isOverlapId = { "animation vibro": false };
+        }, 1000);
+        this.error.id = text;
+      } else if (sbj == "code") {
+        this.ux.isAuthEmail = { "animation vibro": true };
+        setTimeout(() => {
+          this.ux.isAuthEmail = { "animation vibro": false };
+        }, 1000);
+        this.error.code = text;
+      } else if (sbj == "email") {
+        this.ux.isAuthEmail = { "animation vibro": true };
+        setTimeout(() => {
+          this.ux.isAuthEmail = { "animation vibro": false };
+        }, 1000);
+        this.error.email = text;
+      } else if (sbj == "name") {
+        this.ux.name = { "animation vibro": true };
+        setTimeout(() => {
+          this.ux.name = { "animation vibro": false };
+        }, 1000);
+        this.error.name = text;
+      } else if (sbj == "password") {
+        this.ux.password = { "animation vibro": true };
+        setTimeout(() => {
+          this.ux.password = { "animation vibro": false };
+        }, 1000);
+        this.error.password = text;
+      }
+    },
     idOverlap() {
-      this.ux.isOverlapId = { "animation vibro": false };
-      http
-        .get(`/member/search/${this.userInfoVo.membersId.trim()}`)
-        .then(res => {
-          if (res.data == null || res.data == "") {
-            alert("중복 체크 완료!!");
-            this.pageInfo.isOverlapId = true;
-          } else {
-            alert("중복 아이디입니다.");
-            this.ux.isOverlapId = { "animation vibro": true };
-          }
-        })
-        .catch(() => {
-          alert("서버 접속 오류!!");
-          this.ux.isOverlapId = { "animation vibro": true };
-        });
+      if (this.userInfoVo.membersId.trim().length > 0) {
+        http
+          .get(`/member/search/${this.userInfoVo.membersId.trim()}`)
+          .then(res => {
+            if (res.data == null || res.data == "") {
+              alert("중복 체크 완료!!");
+              this.pageInfo.isOverlapId = true;
+            } else {
+              this.aniVibro("id", "중복된 ID입니다.");
+            }
+          })
+          .catch(() => {
+            this.aniVibro("id", "서버 접속을 실패했습니다.");
+          });
+      } else {
+        this.aniVibro("id", "ID를 입력해주세요.");
+      }
     },
     emailAutho() {
       if (this.userInfoVo.code.trim().length > 0) {
@@ -213,19 +261,16 @@ export default {
           })
           .then(res => {
             if (res.data == null || res.data == "") {
-              alert("이메일 인증 실패했습니다.");
-              this.ux.isAuthEmail = { "animation vibro": true };
+              this.aniVibro("code", "이메일 인증에 실패하였습니다.");
             } else {
               alert("이메일 인증 성공했습니다.");
-              this.pageInfo.isAuthEmail = true;
             }
           })
           .catch(() => {
-            alert("서버 접속 오류");
-            this.ux.isAuthEmail = { "animation vibro": true };
+            this.aniVibro("code", "서버 접속을 실패했습니다.");
           });
       } else {
-        alert("코드를 입력해주세요.");
+        this.aniVibro("code", "코드를 입력해주세요.");
       }
     },
     requestEmail() {
@@ -234,7 +279,7 @@ export default {
           .post(`/member/sendEmail`, { email: this.userInfoVo.email.trim() })
           .then(res => {
             if (res.data == null || res.data == "") {
-              alert("이메일 인증코드 전송 실패");
+              this.aniVibro("email", "이메일 전송에 실패했습니다.");
               this.pageInfo.isRequestEmail = false;
             } else {
               alert("이메일에 인증코드를 전송했습니다.");
@@ -242,33 +287,40 @@ export default {
             }
           })
           .catch(() => {
-            alert("서버 접속 오류");
+            this.aniVibro("email", "서버 접속을 실패했습니다.");
             this.pageInfo.isRequestEmail = false;
           });
       } else {
-        alert("이메일을 입력하여주세요");
+        this.aniVibro("email", "이메일을 입력해주세요.");
       }
-    },
-    findAddress() {
-      console.log(1);
-      document.getElementById("signup-form").style.display = "block";
-      console.log(2);
     },
     RequiredInfoInspc() {
       if (
-        this.userInfoVo.membersId.trim().length > 0 &&
-        this.userInfoVo.password.trim().length > 0 &&
-        this.userInfoVo.name.trim().length > 0 &&
-        this.userInfoVo.email.trim().length > 0 &&
-        this.pageInfo.isOverlapId &&
-        this.pageInfo.equalsToPassword &&
-        this.pageInfo.isAuthEmail
+        !(
+          this.userInfoVo.membersId.trim().length > 0 &&
+          this.pageInfo.isOverlapId
+        )
       ) {
+        this.aniVibro("id");
+      } else if (
+        !(
+          this.userInfoVo.password.trim().length > 0 &&
+          this.pageInfo.equalsToPassword
+        )
+      ) {
+        this.aniVibro("password");
+      } else if (!(this.userInfoVo.name.trim().length > 0)) {
+        this.aniVibro("name");
+      } else if (
+        !(this.userInfoVo.email.trim().length > 0 && this.pageInfo.isAuthEmail)
+      ) {
+        this.aniVibro("email");
+      } else {
         this.$router.push({
           name: "SignUpSecond",
           params: { userInfo: this.userInfoVo, pageInfo: this.pageInfo }
         });
-      } else alert("필수 정보를 입력해주세요.");
+      }
     }
   },
   watch: {
@@ -291,5 +343,9 @@ export default {
   padding-left: 20%;
   padding-right: 20%;
   padding-bottom: 20%;
+}
+.error {
+  color: red;
+  font-size: 0.85em;
 }
 </style>

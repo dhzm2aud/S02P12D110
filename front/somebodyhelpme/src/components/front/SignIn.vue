@@ -1,8 +1,8 @@
 <template>
   <div id="signInSecond">
-    <header class="w3-container w3-padding-32 w3-center" id="home">
-      <h1 class="w3-jumbo">Some8ody</h1>
-      <p>재능 역경매 싸이트입니다.</p>
+    <header class="w3-container w3-padding-32 w3-center" id="loginHeader">
+      <h1 class="w3-jumbo" style="font-family:'jjl'">Some8ody</h1>
+      <p style="font-family=jjl;">재능 역경매 싸이트입니다.</p>
     </header>
     <form action="#" target="_blank" id="loginForm">
       <p>
@@ -34,8 +34,10 @@ export default {};
 </script>
 
 <style>
+
 #loginForm {
   padding-left: 20%;
   padding-right: 20%;
+  padding-bottom: 5%;
 }
 </style>

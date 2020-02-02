@@ -58,6 +58,7 @@
       title="close side menu"
       id="myOverlay"
     ></div>
+ <Clock ></Clock>
   </div>
 </template>
 
@@ -66,13 +67,15 @@
 import HomeSidebar from "./home/HomeSidebar.vue";
 import AboutSidebar from "./about/AboutSidebar.vue";
 import CommandSidebar from "./commandCenter/CommandSidebar.vue";
+import Clock from "./Clock.vue";
 
 export default {
   name: "Sidebar",
   components: {
     HomeSidebar,
     AboutSidebar,
-    CommandSidebar
+    CommandSidebar,
+    Clock
   }
 };
 </script>

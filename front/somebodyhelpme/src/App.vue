@@ -29,7 +29,7 @@ export default {
   src: local("중나좋체_Light"),
     url("./fonts/중나좋체_Light.ttf") format("truetype");
 }
-#app {
+p,input{
   font-family: jjl;
 }
 </style>
